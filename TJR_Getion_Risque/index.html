@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionnaire des Risques</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-section {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+            text-align: center;
+        }
+
+        .details {
+            text-align: left;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gestionnaire des Risques de Contrepartie</h1>
+
+        <div class="form-section">
+            <h2>Ajouter une Contrepartie</h2>
+            <input id="ajouterAdresse" type="text" placeholder="Adresse de la contrepartie">
+            <input id="ajouterScoreCredit" type="number" placeholder="Score de Crédit">
+            <input id="ajouterLimiteExposition" type="number" placeholder="Limite d'Exposition">
+            <input id="ajouterCollateral" type="number" placeholder="Collatéral">
+            <button onclick="ajouterContrepartie()">Ajouter</button>
+        </div>
+
+        <div class="form-section">
+            <h2>Mettre à Jour l'Exposition</h2>
+            <input id="expositionA" type="text" placeholder="Adresse A">
+            <input id="expositionB" type="text" placeholder="Adresse B">
+            <input id="montantExposition" type="number" placeholder="Montant">
+            <button onclick="mettreAJourExposition()">Mettre à Jour</button>
+        </div>
+
+        <div class="form-section">
+            <h2>Calculer Exposition Net</h2>
+            <input id="netExpositionA" type="text" placeholder="Adresse A">
+            <input id="netExpositionB" type="text" placeholder="Adresse B">
+            <button onclick="calculerExpositionNet()">Calculer</button>
+            <p id="resultatExpositionNet"></p>
+        </div>
+
+        <div class="form-section">
+            <h2>Calculer Ratio de Couverture</h2>
+            <input id="calculerRatioAdresse" type="text" placeholder="Adresse">
+            <button onclick="calculerRatioCouverture()">Calculer</button>
+            <p id="resultatRatio"></p>
+        </div>
+
+        <div class="form-section">
+            <h2>Calculer Score de Risque</h2>
+            <input id="scoreRisqueA" type="text" placeholder="Adresse A">
+            <input id="scoreRisqueB" type="text" placeholder="Adresse B">
+            <button onclick="calculerScoreRisque()">Calculer</button>
+            <p id="resultatScore"></p>
+        </div>
+
+        <div class="form-section">
+            <h2>Détails d'une Contrepartie</h2>
+            <input id="detailsAdresse" type="text" placeholder="Adresse de la contrepartie">
+            <button onclick="obtenirDetailsContrepartie()">Afficher les Détails</button>
+            <div id="detailsContrepartie" class="details"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
